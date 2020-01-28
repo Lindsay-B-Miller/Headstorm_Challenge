@@ -19,7 +19,8 @@ app.post("/data", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-    res.send(data.values.sort(function (a, b) { return a - b }))
+    let sorted = data.values[0].sort(function (a, b) { return a - b })
+    res.send(sorted)
 })
 
 
