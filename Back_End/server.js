@@ -10,6 +10,7 @@ let data = {
     values: []
 };
 
+// Checking for server functionality
 app.get("/", (req, res) => {
     res.send("Hello World");
 });
