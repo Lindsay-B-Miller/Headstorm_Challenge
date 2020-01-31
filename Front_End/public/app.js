@@ -1,13 +1,14 @@
+// Results based on captcha 
 function showResult(text) {
-    console.log(JSON.parse(text).google_response.success);
-
+    // Checking for success/failure of captcha
+    // console.log(JSON.parse(text).google_response.success);
     if (JSON.parse(text).google_response.success) {
-
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
         let email = document.getElementById("email").value;
         let message = document.getElementById("message").value;
 
+        // Dump form information in console if pass captcha
         console.log("Name: " + firstName + " " + lastName)
         console.log("Email: " + email)
         console.log("Message: " + message)
@@ -15,13 +16,16 @@ function showResult(text) {
         document.querySelector("#success").innerHTML = "Thank you, your form has been submitted"
     }
 
+    // If captcha fails, send error to client
     else {
         document.querySelector("#success").innerHTML = "Did not pass recaptcha"
     }
 }
 
+// Function to handle submit
 function handleClick(token) {
     return function () {
+        // Capture data inputs
         var firstName = document.querySelector("#firstName").value;
         var lastName = document.querySelector("#lastName").value;
         var email = document.querySelector("#email").value;
@@ -34,6 +38,7 @@ function handleClick(token) {
             token: token
         };
 
+        // Send captcha and data
         fetch("/send", {
             headers: {
                 "Accept": "applicatin/json",
@@ -48,6 +53,7 @@ function handleClick(token) {
     }
 }
 
+// Load captcha and send token on submit button
 grecaptcha.ready(function () {
     grecaptcha.execute("6LeZYtAUAAAAAG63Un50E5HhFtT59FM5Q-sdFxKg", { action: "homepage" })
         .then(function (token) {
