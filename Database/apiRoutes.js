@@ -1,6 +1,6 @@
 // Dependencies
 // =============================================================
-// var connection = require("../config/connection.js");
+// var connection = require("./config/connection");
 
 // Database configuration
 // Save the URL of our database as well as the name of our collection
@@ -44,7 +44,15 @@ module.exports = (app) => {
                 // console.log(JSON.stringify(found))
                 res.json(found);
                 console.log(user)
+
+                // For proper logging of scripts in console. If program used to insert into SQL database, VALUES (?,?,?,?) would be used to avoid SQL injectionss
+                for (i = 0; i < user.length; i++) {
+                    console.log("INSERT INTO contact (Record_ID, Name, Cell_Phone, Work_Phone, Email, Address) VALUES (" + user[i].Record_ID + ", " + user[i].Name + ", " + user[i].Cell_Phone + ", " + user[i].Work_Phone + ", " + user[i].Email + ", " + user[i].Address + ")");
+                    console.log("INSERT INTO widget (Record_ID, Basic_Widget_Order, Advanced_Widget_Order, Protection_Plan) VALUES (" + user[i].Record_ID + ", " + user[i].Basic_Widget_Order + ", " + user[i].Advanced_Widget_Order + ", " + user[i].Protection_Plan + ")")
+                }
             }
         });
     });
+
+
 }
