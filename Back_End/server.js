@@ -32,12 +32,26 @@ app.post("/data", (req, res) => {
 
 // GET and sort submitted values
 app.get("/data", (req, res) => {
-    let sorted = data.values[0].sort(function (a, b) { return a - b })
-    res.send(sorted)
+    let sorted = data.values[0].sort(function (a, b) { return a - b });
+    res.send(sorted);
 })
 
+// PATCH request to insert item into correct position
+app.patch("/data", (req, res) => {
+    let newValue = req.body.values;
+
+    if (newValue.length === 1) {
+        data.values.push(newValue);
+        console.log(data.values[0])
+        let sorted = data.values[0].sort(function (a, b) { return a - b });
+        res.send(sorted);
+    }
+    else {
+        res.send("Please submit one numerical value")
+    }
+});
 
 // Starting server listening
 app.listen(PORT, () => {
     console.log("Listening at http://localhost:" + PORT)
-})
+});
