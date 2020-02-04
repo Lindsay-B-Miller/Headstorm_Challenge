@@ -2,7 +2,7 @@ CREATE DATABASE users;
 USE users;
 
 CREATE TABLE `contact` (
-  `Record_ID` NOT NULL,
+  `Record_ID` INTEGER NOT NULL,
   `Name` VARCHAR( 255) NOT NULL,
   `Cell_Phone` VARCHAR( 255 ),
   `Work_Phone` VARCHAR( 255 ),
@@ -13,10 +13,10 @@ CREATE TABLE `contact` (
 );
 
 CREATE TABLE `widget` (
-  `Record_ID` NOT NULL,
+  `Record_ID` INTEGER NOT NULL,
   `Basic_Widget_Order` INTEGER(10),
   `Advanced_Widget_Order` INTEGER(10),
   `Protection_Plan` BOOLEAN,
 
   PRIMARY KEY(`Record_ID`)
-)
+);
