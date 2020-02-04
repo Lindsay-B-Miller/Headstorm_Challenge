@@ -1,9 +1,8 @@
 // Dependencies
 // =============================================================
-// var connection = require("./config/connection");
 
 // Database configuration
-// Save the URL of our database as well as the name of our collection
+// Save the URL of the database as well as the name of the collection
 var databaseUrl = "users";
 var collections = ["users"];
 var mongojs = require("mongojs");
@@ -60,4 +59,4 @@ module.exports = (app) => {
     });
 
 
-}
+};
