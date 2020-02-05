@@ -1,6 +1,3 @@
-// Dependencies
-// =============================================================
-
 // Database configuration
 // Save the URL of the database as well as the name of the collection
 var databaseUrl = "users";
